@@ -6,6 +6,10 @@ simple circuit breaker in nodejs
 First configure the circuit breaker with some values, like url to check periodicallu, timeout, min errors and success, etc.
 
 ```javascript
+const { Configure } = require('./circuit-breaker');
+```
+
+```javascript
 const circuitBreaker = Configure({
     serviceKey: 'localhost/data',
     checkUrl: 'http://localhost:9000/data',
