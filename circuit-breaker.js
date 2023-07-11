@@ -94,10 +94,10 @@ const call = ({context}) => async (fn, fallBack) => {
         return Promise.resolve(fn())
             .catch((err) => {
                 return __failing({context})()
-                .then(() => fallBack ? fallBack() : Promise.reject(err))
+                .then(() => fallBack ? fallBack() : Promise.reject('resource failure'))
             })
     }
-    return fallBack && fallBack()
+    return fallBack ? fallBack() : Promise.reject('resource failure')
 }
 
 const stop = ({context}) => () => {
